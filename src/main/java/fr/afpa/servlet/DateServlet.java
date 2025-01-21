@@ -21,6 +21,32 @@ import jakarta.servlet.http.HttpServletResponse;
  * - requêtage HTTP
  * - déploiement d'un WAR sur serveur Tomcat pour tester
  */
-public class DateServlet {
+@WebServlet("/date")
+public class DateServlet extends HttpServlet {
     // TODO compléter tout ça ! glhf!
+
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+
+		LocalDate currentDate = LocalDate.now();
+
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>Servlet DateServlet</title>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<h1>Servlet DateServlet</h1>");
+		out.println("</body>");
+		out.println("</html>");
+
+		PrintWriter writer = response.getWriter();
+		writer.write("Current date: " + currentDate);
+		writer.flush();
+
+	}
+
+
 }
